@@ -20,7 +20,6 @@ class Main {
     double b = scanner.nextDouble();
     // --------------------
 
-    
     Contas teste = new Contas(L, ni, nf, a, b);
 
     // Energia Inicial e Final
