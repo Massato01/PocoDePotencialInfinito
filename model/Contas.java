@@ -1,10 +1,15 @@
-import java.lang.Math.*;
+package pkg222210106_carlos_chinen_projeto.model;
+
+/**
+ *
+ * @author Carlos Massato, Gabriel Missima
+ */
 
 public class Contas {
   private double L = 200e-12;
-  private double h = 6.626e-34;
-  private double m = 9.11e-31;
-  private double c = 3e8;
+  private final double h = 6.626e-34;
+  private final double m = 9.11e-31;
+  private final double c = 3e8;
   private double En;
   private double Ei;
   private double Ef;

@@ -1,4 +1,11 @@
+package pkg222210106_carlos_chinen_projeto;
 import java.util.Scanner;
+import pkg222210106_carlos_chinen_projeto.model.Contas;
+
+/**
+ *
+ * @author Carlos Massato, Gabriel Missima
+ */
 
 class Main {
   public static void main(String[] args) {
