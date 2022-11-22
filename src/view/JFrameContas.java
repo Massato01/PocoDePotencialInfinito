@@ -1,22 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package view;
+package app.view;
 
-import model.Contas;
+import java.sql.SQLException;
+import app.controller.Controller;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTextField;
 
 /**
+ * Interface para as contas. O usuário insere os valores, o código os recebe,
+ * calcula, e exibe os resutlados
  *
- * @author massa
+ * @author Carlos Chinen
  */
 public class JFrameContas extends javax.swing.JFrame {
 
     /**
      * Creates new form JFrameContas
      */
+    private Controller resultados_controller;
+
     public JFrameContas() {
         initComponents();
+
+        // Inicializando o Controller
+        resultados_controller = new Controller(this);
     }
 
     /**
@@ -31,74 +38,100 @@ public class JFrameContas extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtNi = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        txtEfProton2 = new javax.swing.JTextField();
+        Proton2 = new javax.swing.JLabel();
+        txtFreqProton2 = new javax.swing.JTextField();
+        FuncaoDeOndaInicial10 = new javax.swing.JLabel();
+        FuncaoDeOndaFinal10 = new javax.swing.JLabel();
+        txtEFotProton2 = new javax.swing.JTextField();
+        FuncaoDeOndaFinal11 = new javax.swing.JLabel();
+        txtProbFinProton2 = new javax.swing.JTextField();
+        txtProbIniProton2 = new javax.swing.JTextField();
+        FuncaoDeOndaInicial11 = new javax.swing.JLabel();
+        txtFuncOndaFinProtonpt5 = new javax.swing.JTextField();
+        FuncaoDeOndaInicial12 = new javax.swing.JLabel();
+        txtFuncOndaIniProtonpt5 = new javax.swing.JTextField();
+        txtFuncOndaIniProtonpt6 = new javax.swing.JTextField();
+        FuncaoDeOndaFinal12 = new javax.swing.JLabel();
+        txtBroglieFinProton2 = new javax.swing.JTextField();
+        txtCompProton2 = new javax.swing.JTextField();
+        txtEiProton2 = new javax.swing.JTextField();
+        txtFuncOndaFinProtonpt6 = new javax.swing.JTextField();
+        txtBroglieIniProton2 = new javax.swing.JTextField();
+        txtVelFinalProton2 = new javax.swing.JTextField();
+        txtVelIniProton2 = new javax.swing.JTextField();
+        Area = new javax.swing.JPanel();
+        Largura = new javax.swing.JLabel();
+        Ni = new javax.swing.JLabel();
+        Nf = new javax.swing.JLabel();
+        A = new javax.swing.JLabel();
+        B = new javax.swing.JLabel();
         txtLargura = new javax.swing.JTextField();
+        txtNi = new javax.swing.JTextField();
         txtNf = new javax.swing.JTextField();
         txtA = new javax.swing.JTextField();
         txtB = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        txtCompEletron = new javax.swing.JTextField();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        txtEFotEletron = new javax.swing.JTextField();
+        btnCalcular = new javax.swing.JButton();
+        EnergiaNivelInicial = new javax.swing.JLabel();
+        EnergiaNivelFinal = new javax.swing.JLabel();
+        EnergiaDoFoton = new javax.swing.JLabel();
+        ComprimentoDeOnda = new javax.swing.JLabel();
+        Frequencia = new javax.swing.JLabel();
+        ComprimentoDeBroglieInicial = new javax.swing.JLabel();
+        ComprimentoDeBroglieFinal = new javax.swing.JLabel();
+        VelocidadeInicial = new javax.swing.JLabel();
+        VelocidadeFinal = new javax.swing.JLabel();
+        FuncaoDeOndaInicial0 = new javax.swing.JLabel();
+        FuncaoDeOndaFinal0 = new javax.swing.JLabel();
+        ProbabilidadeInicial = new javax.swing.JLabel();
+        ProbabilidadeFinal = new javax.swing.JLabel();
+        txtEfProton = new javax.swing.JTextField();
+        txtFreqProton = new javax.swing.JTextField();
+        FuncaoDeOndaInicial5 = new javax.swing.JLabel();
+        FuncaoDeOndaFinal4 = new javax.swing.JLabel();
+        txtEFotProton = new javax.swing.JTextField();
+        FuncaoDeOndaFinal6 = new javax.swing.JLabel();
+        txtProbFinProton = new javax.swing.JTextField();
+        txtProbIniProton = new javax.swing.JTextField();
+        FuncaoDeOndaInicial4 = new javax.swing.JLabel();
+        txtFuncOndaFinProtonpt2 = new javax.swing.JTextField();
+        FuncaoDeOndaInicial6 = new javax.swing.JLabel();
+        txtFuncOndaIniProtonpt1 = new javax.swing.JTextField();
+        txtFuncOndaIniProtonpt2 = new javax.swing.JTextField();
+        FuncaoDeOndaFinal5 = new javax.swing.JLabel();
+        txtBroglieFinProton = new javax.swing.JTextField();
+        txtEiProton = new javax.swing.JTextField();
+        txtCompProton = new javax.swing.JTextField();
+        txtFuncOndaFinProtonpt1 = new javax.swing.JTextField();
+        txtBroglieIniProton = new javax.swing.JTextField();
+        txtVelFinalProton = new javax.swing.JTextField();
+        txtVelIniProton = new javax.swing.JTextField();
         txtEiEletron = new javax.swing.JTextField();
-        txtFreqEletron = new javax.swing.JTextField();
         txtEfEletron = new javax.swing.JTextField();
+        txtEFotEletron = new javax.swing.JTextField();
+        txtCompEletron = new javax.swing.JTextField();
+        txtFreqEletron = new javax.swing.JTextField();
         txtBroglieIniEletron = new javax.swing.JTextField();
+        txtBroglieFinEletron = new javax.swing.JTextField();
         txtVelIniEletron = new javax.swing.JTextField();
         txtVelFinalEletron = new javax.swing.JTextField();
         txtFuncOndaIniEletronpt1 = new javax.swing.JTextField();
+        txtFuncOndaFinEletronpt1 = new javax.swing.JTextField();
+        FuncaoDeOndaInicial1 = new javax.swing.JLabel();
+        FuncaoDeOndaFinal1 = new javax.swing.JLabel();
+        FuncaoDeOndaInicial2 = new javax.swing.JLabel();
+        FuncaoDeOndaFinal2 = new javax.swing.JLabel();
+        txtFuncOndaIniEletronpt2 = new javax.swing.JTextField();
         txtFuncOndaFinEletronpt2 = new javax.swing.JTextField();
+        FuncaoDeOndaInicial3 = new javax.swing.JLabel();
+        FuncaoDeOndaFinal3 = new javax.swing.JLabel();
         txtProbIniEletron = new javax.swing.JTextField();
         txtProbFinEletron = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        txtBroglieFinEletron = new javax.swing.JTextField();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        txtFuncOndaIniEletronpt2 = new javax.swing.JTextField();
-        txtFuncOndaFinEletronpt1 = new javax.swing.JTextField();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        txtCompProton = new javax.swing.JTextField();
-        txtEFotProton = new javax.swing.JTextField();
-        txtEiProton = new javax.swing.JTextField();
-        txtFreqProton = new javax.swing.JTextField();
-        txtEfProton = new javax.swing.JTextField();
-        txtBroglieFinProton = new javax.swing.JTextField();
-        txtBroglieIniProton = new javax.swing.JTextField();
-        txtVelIniProton = new javax.swing.JTextField();
-        txtVelFinalProton = new javax.swing.JTextField();
-        jLabel28 = new javax.swing.JLabel();
-        txtFuncOndaIniProtonpt1 = new javax.swing.JTextField();
-        txtFuncOndaFinProtonpt2 = new javax.swing.JTextField();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        txtFuncOndaIniProtonpt2 = new javax.swing.JTextField();
-        txtFuncOndaFinProtonpt1 = new javax.swing.JTextField();
-        jLabel33 = new javax.swing.JLabel();
-        txtProbIniProton = new javax.swing.JTextField();
-        txtProbFinProton = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         jTextField2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
 
@@ -106,488 +139,815 @@ public class JFrameContas extends javax.swing.JFrame {
 
         jLabel13.setText("jLabel13");
 
+        txtEfProton2.setBackground(new java.awt.Color(255, 255, 255));
+        txtEfProton2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtEfProton2.setOpaque(true);
+
+        Proton2.setBackground(new java.awt.Color(255, 255, 255));
+        Proton2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        Proton2.setForeground(new java.awt.Color(0, 0, 0));
+        Proton2.setText("Próton:");
+        Proton2.setOpaque(true);
+
+        txtFreqProton2.setBackground(new java.awt.Color(255, 255, 255));
+        txtFreqProton2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFreqProton2.setOpaque(true);
+
+        FuncaoDeOndaInicial10.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaInicial10.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        FuncaoDeOndaInicial10.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaInicial10.setText("Sen(");
+        FuncaoDeOndaInicial10.setOpaque(true);
+
+        FuncaoDeOndaFinal10.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaFinal10.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        FuncaoDeOndaFinal10.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaFinal10.setText("*");
+        FuncaoDeOndaFinal10.setOpaque(true);
+
+        txtEFotProton2.setBackground(new java.awt.Color(255, 255, 255));
+        txtEFotProton2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtEFotProton2.setOpaque(true);
+
+        FuncaoDeOndaFinal11.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaFinal11.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        FuncaoDeOndaFinal11.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaFinal11.setText(") * x");
+        FuncaoDeOndaFinal11.setOpaque(true);
+
+        txtProbFinProton2.setBackground(new java.awt.Color(255, 255, 255));
+        txtProbFinProton2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtProbFinProton2.setOpaque(true);
+
+        txtProbIniProton2.setBackground(new java.awt.Color(255, 255, 255));
+        txtProbIniProton2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtProbIniProton2.setOpaque(true);
+
+        FuncaoDeOndaInicial11.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaInicial11.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        FuncaoDeOndaInicial11.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaInicial11.setText(") * x");
+        FuncaoDeOndaInicial11.setOpaque(true);
+
+        txtFuncOndaFinProtonpt5.setBackground(new java.awt.Color(255, 255, 255));
+        txtFuncOndaFinProtonpt5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFuncOndaFinProtonpt5.setOpaque(true);
+
+        FuncaoDeOndaInicial12.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaInicial12.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        FuncaoDeOndaInicial12.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaInicial12.setText("*");
+        FuncaoDeOndaInicial12.setOpaque(true);
+
+        txtFuncOndaIniProtonpt5.setBackground(new java.awt.Color(255, 255, 255));
+        txtFuncOndaIniProtonpt5.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFuncOndaIniProtonpt5.setOpaque(true);
+
+        txtFuncOndaIniProtonpt6.setBackground(new java.awt.Color(255, 255, 255));
+        txtFuncOndaIniProtonpt6.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFuncOndaIniProtonpt6.setOpaque(true);
+
+        FuncaoDeOndaFinal12.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaFinal12.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        FuncaoDeOndaFinal12.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaFinal12.setText("Sen(");
+        FuncaoDeOndaFinal12.setOpaque(true);
+
+        txtBroglieFinProton2.setBackground(new java.awt.Color(255, 255, 255));
+        txtBroglieFinProton2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtBroglieFinProton2.setOpaque(true);
+
+        txtCompProton2.setBackground(new java.awt.Color(255, 255, 255));
+        txtCompProton2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtCompProton2.setOpaque(true);
+
+        txtEiProton2.setBackground(new java.awt.Color(255, 255, 255));
+        txtEiProton2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtEiProton2.setOpaque(true);
+
+        txtFuncOndaFinProtonpt6.setBackground(new java.awt.Color(255, 255, 255));
+        txtFuncOndaFinProtonpt6.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFuncOndaFinProtonpt6.setOpaque(true);
+
+        txtBroglieIniProton2.setBackground(new java.awt.Color(255, 255, 255));
+        txtBroglieIniProton2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtBroglieIniProton2.setOpaque(true);
+
+        txtVelFinalProton2.setBackground(new java.awt.Color(255, 255, 255));
+        txtVelFinalProton2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtVelFinalProton2.setOpaque(true);
+
+        txtVelIniProton2.setBackground(new java.awt.Color(255, 255, 255));
+        txtVelIniProton2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtVelIniProton2.setOpaque(true);
+        txtVelIniProton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVelIniProton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(38, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtBroglieIniProton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtFreqProton2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Proton2)
+                            .addComponent(txtEFotProton2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEiProton2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEfProton2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCompProton2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtBroglieFinProton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtProbFinProton2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtProbIniProton2, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtFuncOndaIniProtonpt6)
+                            .addComponent(txtFuncOndaFinProtonpt6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(FuncaoDeOndaFinal10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(FuncaoDeOndaFinal12))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(FuncaoDeOndaInicial12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(FuncaoDeOndaInicial10)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtFuncOndaIniProtonpt5)
+                            .addComponent(txtFuncOndaFinProtonpt5, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(FuncaoDeOndaInicial11, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FuncaoDeOndaFinal11)))
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtVelFinalProton2, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txtVelIniProton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(17, 17, 17))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(Proton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtEiProton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtEfProton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtEFotProton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCompProton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtFreqProton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtBroglieIniProton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtBroglieFinProton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtVelIniProton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtVelFinalProton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFuncOndaIniProtonpt6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FuncaoDeOndaInicial12)
+                    .addComponent(FuncaoDeOndaInicial10)
+                    .addComponent(txtFuncOndaIniProtonpt5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FuncaoDeOndaInicial11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFuncOndaFinProtonpt5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FuncaoDeOndaFinal10)
+                    .addComponent(FuncaoDeOndaFinal12)
+                    .addComponent(txtFuncOndaFinProtonpt6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FuncaoDeOndaFinal11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtProbIniProton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtProbFinProton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel1.setText("Largura L [m]:");
+        Area.setBackground(new java.awt.Color(255, 255, 255));
+        Area.setForeground(new java.awt.Color(53, 53, 53));
+        Area.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Area.setPreferredSize(new java.awt.Dimension(1020, 610));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("ni:");
+        Largura.setBackground(new java.awt.Color(255, 255, 255));
+        Largura.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        Largura.setForeground(new java.awt.Color(0, 0, 0));
+        Largura.setText("Largura L [m]:");
+        Largura.setOpaque(true);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setText("nf:");
+        Ni.setBackground(new java.awt.Color(255, 255, 255));
+        Ni.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        Ni.setForeground(new java.awt.Color(0, 0, 0));
+        Ni.setText("ni:");
+        Ni.setOpaque(true);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setText("A [m]:");
+        Nf.setBackground(new java.awt.Color(255, 255, 255));
+        Nf.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        Nf.setForeground(new java.awt.Color(0, 0, 0));
+        Nf.setText("nf:");
+        Nf.setOpaque(true);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setText("B [m]:");
+        A.setBackground(new java.awt.Color(255, 255, 255));
+        A.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        A.setForeground(new java.awt.Color(0, 0, 0));
+        A.setText("A [m]:");
+        A.setOpaque(true);
 
-        txtNi.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        B.setBackground(new java.awt.Color(255, 255, 255));
+        B.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        B.setForeground(new java.awt.Color(0, 0, 0));
+        B.setText("B [m]:");
+        B.setOpaque(true);
 
+        txtLargura.setBackground(new java.awt.Color(255, 255, 255));
         txtLargura.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtLargura.setOpaque(true);
 
+        txtNi.setBackground(new java.awt.Color(255, 255, 255));
+        txtNi.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNi.setOpaque(true);
+
+        txtNf.setBackground(new java.awt.Color(255, 255, 255));
         txtNf.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtNf.setOpaque(true);
         txtNf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNfActionPerformed(evt);
             }
         });
 
+        txtA.setBackground(new java.awt.Color(255, 255, 255));
         txtA.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtA.setOpaque(true);
 
+        txtB.setBackground(new java.awt.Color(255, 255, 255));
         txtB.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtB.setOpaque(true);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        jLabel6.setText("Elétron:");
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        jLabel7.setText("Próton:");
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel8.setText("Energia no nível inicial [J]:");
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel9.setText("Energia no nível final [J]:");
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel10.setText("Energia do fóton [J]:");
-
-        txtCompEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel14.setText("Comprimento de onda [m]:");
-
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel15.setText("Frequência [Hz]:");
-
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel16.setText("Comprimento De Broglie inicial [m]:");
-
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel17.setText("Velocidade inicial [m/s]:");
-
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel18.setText("Velocidade final [m/s]:");
-
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel19.setText("Função de onda inicial:");
-
-        jLabel20.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel20.setText("Função de onda final:");
-
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel21.setText("Probabilidade inicial:");
-
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel22.setText("Probabilidade final:");
-
-        txtEFotEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-
-        txtEiEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-
-        txtFreqEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-
-        txtEfEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-
-        txtBroglieIniEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-
-        txtVelIniEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-
-        txtVelFinalEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-
-        txtFuncOndaIniEletronpt1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-
-        txtFuncOndaFinEletronpt2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-
-        txtProbIniEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-
-        txtProbFinEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setText("Calcular");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCalcular.setBackground(new java.awt.Color(204, 204, 255));
+        btnCalcular.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        btnCalcular.setForeground(new java.awt.Color(0, 0, 0));
+        btnCalcular.setText("Calcular");
+        btnCalcular.setOpaque(true);
+        btnCalcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCalcularActionPerformed(evt);
             }
         });
 
-        txtBroglieFinEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        EnergiaNivelInicial.setBackground(new java.awt.Color(255, 255, 255));
+        EnergiaNivelInicial.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        EnergiaNivelInicial.setForeground(new java.awt.Color(0, 0, 0));
+        EnergiaNivelInicial.setText("Energia no nível inicial [J]:");
+        EnergiaNivelInicial.setOpaque(true);
 
-        jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel23.setText("Comprimento De Broglie final [m]:");
+        EnergiaNivelFinal.setBackground(new java.awt.Color(255, 255, 255));
+        EnergiaNivelFinal.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        EnergiaNivelFinal.setForeground(new java.awt.Color(0, 0, 0));
+        EnergiaNivelFinal.setText("Energia no nível final [J]:");
+        EnergiaNivelFinal.setOpaque(true);
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel11.setText("*");
+        EnergiaDoFoton.setBackground(new java.awt.Color(255, 255, 255));
+        EnergiaDoFoton.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        EnergiaDoFoton.setForeground(new java.awt.Color(0, 0, 0));
+        EnergiaDoFoton.setText("Energia do fóton [J]:");
+        EnergiaDoFoton.setOpaque(true);
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel12.setText("*");
+        ComprimentoDeOnda.setBackground(new java.awt.Color(255, 255, 255));
+        ComprimentoDeOnda.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        ComprimentoDeOnda.setForeground(new java.awt.Color(0, 0, 0));
+        ComprimentoDeOnda.setText("Comprimento de onda [m]:");
+        ComprimentoDeOnda.setOpaque(true);
 
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel24.setText("Sen(");
+        Frequencia.setBackground(new java.awt.Color(255, 255, 255));
+        Frequencia.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        Frequencia.setForeground(new java.awt.Color(0, 0, 0));
+        Frequencia.setText("Frequência [Hz]:");
+        Frequencia.setOpaque(true);
 
-        jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel25.setText("Sen(");
+        ComprimentoDeBroglieInicial.setBackground(new java.awt.Color(255, 255, 255));
+        ComprimentoDeBroglieInicial.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        ComprimentoDeBroglieInicial.setForeground(new java.awt.Color(0, 0, 0));
+        ComprimentoDeBroglieInicial.setText("Comprimento De Broglie inicial [m]:");
+        ComprimentoDeBroglieInicial.setOpaque(true);
 
-        txtFuncOndaIniEletronpt2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        ComprimentoDeBroglieFinal.setBackground(new java.awt.Color(255, 255, 255));
+        ComprimentoDeBroglieFinal.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        ComprimentoDeBroglieFinal.setForeground(new java.awt.Color(0, 0, 0));
+        ComprimentoDeBroglieFinal.setText("Comprimento De Broglie final [m]:");
+        ComprimentoDeBroglieFinal.setOpaque(true);
 
-        txtFuncOndaFinEletronpt1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        VelocidadeInicial.setBackground(new java.awt.Color(255, 255, 255));
+        VelocidadeInicial.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        VelocidadeInicial.setForeground(new java.awt.Color(0, 0, 0));
+        VelocidadeInicial.setText("Velocidade inicial [m/s]:");
+        VelocidadeInicial.setOpaque(true);
 
-        jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel26.setText(") * x");
+        VelocidadeFinal.setBackground(new java.awt.Color(255, 255, 255));
+        VelocidadeFinal.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        VelocidadeFinal.setForeground(new java.awt.Color(0, 0, 0));
+        VelocidadeFinal.setText("Velocidade final [m/s]:");
+        VelocidadeFinal.setOpaque(true);
 
-        jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel27.setText(") * x");
+        FuncaoDeOndaInicial0.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaInicial0.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        FuncaoDeOndaInicial0.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaInicial0.setText("Função de onda inicial:");
+        FuncaoDeOndaInicial0.setOpaque(true);
 
-        txtCompProton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        FuncaoDeOndaFinal0.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaFinal0.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        FuncaoDeOndaFinal0.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaFinal0.setText("Função de onda final:");
+        FuncaoDeOndaFinal0.setOpaque(true);
 
-        txtEFotProton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        ProbabilidadeInicial.setBackground(new java.awt.Color(255, 255, 255));
+        ProbabilidadeInicial.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        ProbabilidadeInicial.setForeground(new java.awt.Color(0, 0, 0));
+        ProbabilidadeInicial.setText("Probabilidade inicial:");
+        ProbabilidadeInicial.setOpaque(true);
 
-        txtEiProton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        ProbabilidadeFinal.setBackground(new java.awt.Color(255, 255, 255));
+        ProbabilidadeFinal.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        ProbabilidadeFinal.setForeground(new java.awt.Color(0, 0, 0));
+        ProbabilidadeFinal.setText("Probabilidade final:");
+        ProbabilidadeFinal.setOpaque(true);
 
-        txtFreqProton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-
+        txtEfProton.setBackground(new java.awt.Color(255, 255, 255));
         txtEfProton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtEfProton.setOpaque(true);
 
+        txtFreqProton.setBackground(new java.awt.Color(255, 255, 255));
+        txtFreqProton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFreqProton.setOpaque(true);
+
+        FuncaoDeOndaInicial5.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaInicial5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        FuncaoDeOndaInicial5.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaInicial5.setText("Sen(");
+        FuncaoDeOndaInicial5.setOpaque(true);
+
+        FuncaoDeOndaFinal4.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaFinal4.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        FuncaoDeOndaFinal4.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaFinal4.setText("*");
+        FuncaoDeOndaFinal4.setOpaque(true);
+
+        txtEFotProton.setBackground(new java.awt.Color(255, 255, 255));
+        txtEFotProton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtEFotProton.setOpaque(true);
+
+        FuncaoDeOndaFinal6.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaFinal6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        FuncaoDeOndaFinal6.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaFinal6.setText(") * x");
+        FuncaoDeOndaFinal6.setOpaque(true);
+
+        txtProbFinProton.setBackground(new java.awt.Color(255, 255, 255));
+        txtProbFinProton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtProbFinProton.setOpaque(true);
+
+        txtProbIniProton.setBackground(new java.awt.Color(255, 255, 255));
+        txtProbIniProton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtProbIniProton.setOpaque(true);
+
+        FuncaoDeOndaInicial4.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaInicial4.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        FuncaoDeOndaInicial4.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaInicial4.setText("*");
+        FuncaoDeOndaInicial4.setOpaque(true);
+
+        txtFuncOndaFinProtonpt2.setBackground(new java.awt.Color(255, 255, 255));
+        txtFuncOndaFinProtonpt2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFuncOndaFinProtonpt2.setOpaque(true);
+
+        FuncaoDeOndaInicial6.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaInicial6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        FuncaoDeOndaInicial6.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaInicial6.setText(") * x");
+        FuncaoDeOndaInicial6.setOpaque(true);
+
+        txtFuncOndaIniProtonpt1.setBackground(new java.awt.Color(255, 255, 255));
+        txtFuncOndaIniProtonpt1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFuncOndaIniProtonpt1.setOpaque(true);
+
+        txtFuncOndaIniProtonpt2.setBackground(new java.awt.Color(255, 255, 255));
+        txtFuncOndaIniProtonpt2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFuncOndaIniProtonpt2.setOpaque(true);
+
+        FuncaoDeOndaFinal5.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaFinal5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        FuncaoDeOndaFinal5.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaFinal5.setText("Sen(");
+        FuncaoDeOndaFinal5.setOpaque(true);
+
+        txtBroglieFinProton.setBackground(new java.awt.Color(255, 255, 255));
         txtBroglieFinProton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtBroglieFinProton.setOpaque(true);
 
+        txtEiProton.setBackground(new java.awt.Color(255, 255, 255));
+        txtEiProton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtEiProton.setOpaque(true);
+
+        txtCompProton.setBackground(new java.awt.Color(255, 255, 255));
+        txtCompProton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtCompProton.setOpaque(true);
+
+        txtFuncOndaFinProtonpt1.setBackground(new java.awt.Color(255, 255, 255));
+        txtFuncOndaFinProtonpt1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFuncOndaFinProtonpt1.setOpaque(true);
+
+        txtBroglieIniProton.setBackground(new java.awt.Color(255, 255, 255));
         txtBroglieIniProton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtBroglieIniProton.setOpaque(true);
 
+        txtVelFinalProton.setBackground(new java.awt.Color(255, 255, 255));
+        txtVelFinalProton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtVelFinalProton.setOpaque(true);
+
+        txtVelIniProton.setBackground(new java.awt.Color(255, 255, 255));
         txtVelIniProton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtVelIniProton.setOpaque(true);
         txtVelIniProton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtVelIniProtonActionPerformed(evt);
             }
         });
 
-        txtVelFinalProton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtEiEletron.setBackground(new java.awt.Color(255, 255, 255));
+        txtEiEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtEiEletron.setOpaque(true);
 
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel28.setText(") * x");
+        txtEfEletron.setBackground(new java.awt.Color(255, 255, 255));
+        txtEfEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtEfEletron.setOpaque(true);
 
-        txtFuncOndaIniProtonpt1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtEFotEletron.setBackground(new java.awt.Color(255, 255, 255));
+        txtEFotEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtEFotEletron.setOpaque(true);
 
-        txtFuncOndaFinProtonpt2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtCompEletron.setBackground(new java.awt.Color(255, 255, 255));
+        txtCompEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtCompEletron.setOpaque(true);
 
-        jLabel29.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel29.setText("*");
+        txtFreqEletron.setBackground(new java.awt.Color(255, 255, 255));
+        txtFreqEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFreqEletron.setOpaque(true);
 
-        jLabel30.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel30.setText("*");
+        txtBroglieIniEletron.setBackground(new java.awt.Color(255, 255, 255));
+        txtBroglieIniEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtBroglieIniEletron.setOpaque(true);
 
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel31.setText("Sen(");
+        txtBroglieFinEletron.setBackground(new java.awt.Color(255, 255, 255));
+        txtBroglieFinEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtBroglieFinEletron.setOpaque(true);
 
-        jLabel32.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel32.setText("Sen(");
+        txtVelIniEletron.setBackground(new java.awt.Color(255, 255, 255));
+        txtVelIniEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtVelIniEletron.setOpaque(true);
 
-        txtFuncOndaIniProtonpt2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtVelFinalEletron.setBackground(new java.awt.Color(255, 255, 255));
+        txtVelFinalEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtVelFinalEletron.setOpaque(true);
 
-        txtFuncOndaFinProtonpt1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFuncOndaIniEletronpt1.setBackground(new java.awt.Color(255, 255, 255));
+        txtFuncOndaIniEletronpt1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFuncOndaIniEletronpt1.setOpaque(true);
 
-        jLabel33.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel33.setText(") * x");
+        txtFuncOndaFinEletronpt1.setBackground(new java.awt.Color(255, 255, 255));
+        txtFuncOndaFinEletronpt1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFuncOndaFinEletronpt1.setOpaque(true);
 
-        txtProbIniProton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        FuncaoDeOndaInicial1.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaInicial1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        FuncaoDeOndaInicial1.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaInicial1.setText("*");
+        FuncaoDeOndaInicial1.setOpaque(true);
 
-        txtProbFinProton.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        FuncaoDeOndaFinal1.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaFinal1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        FuncaoDeOndaFinal1.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaFinal1.setText("*");
+        FuncaoDeOndaFinal1.setOpaque(true);
+
+        FuncaoDeOndaInicial2.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaInicial2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        FuncaoDeOndaInicial2.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaInicial2.setText("Sen(");
+        FuncaoDeOndaInicial2.setOpaque(true);
+
+        FuncaoDeOndaFinal2.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaFinal2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        FuncaoDeOndaFinal2.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaFinal2.setText("Sen(");
+        FuncaoDeOndaFinal2.setOpaque(true);
+
+        txtFuncOndaIniEletronpt2.setBackground(new java.awt.Color(255, 255, 255));
+        txtFuncOndaIniEletronpt2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFuncOndaIniEletronpt2.setOpaque(true);
+
+        txtFuncOndaFinEletronpt2.setBackground(new java.awt.Color(255, 255, 255));
+        txtFuncOndaFinEletronpt2.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtFuncOndaFinEletronpt2.setOpaque(true);
+
+        FuncaoDeOndaInicial3.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaInicial3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        FuncaoDeOndaInicial3.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaInicial3.setText(") * x");
+        FuncaoDeOndaInicial3.setOpaque(true);
+
+        FuncaoDeOndaFinal3.setBackground(new java.awt.Color(255, 255, 255));
+        FuncaoDeOndaFinal3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        FuncaoDeOndaFinal3.setForeground(new java.awt.Color(0, 0, 0));
+        FuncaoDeOndaFinal3.setText(") * x");
+        FuncaoDeOndaFinal3.setOpaque(true);
+
+        txtProbIniEletron.setBackground(new java.awt.Color(255, 255, 255));
+        txtProbIniEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtProbIniEletron.setOpaque(true);
+
+        txtProbFinEletron.setBackground(new java.awt.Color(255, 255, 255));
+        txtProbFinEletron.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        txtProbFinEletron.setOpaque(true);
+
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("PRÓTON");
+
+        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("ELÉTRON");
+
+        javax.swing.GroupLayout AreaLayout = new javax.swing.GroupLayout(Area);
+        Area.setLayout(AreaLayout);
+        AreaLayout.setHorizontalGroup(
+            AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AreaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnCalcular, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(AreaLayout.createSequentialGroup()
+                        .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(EnergiaNivelInicial)
+                            .addComponent(Frequencia)
+                            .addComponent(ComprimentoDeBroglieInicial)
+                            .addComponent(ComprimentoDeBroglieFinal)
+                            .addComponent(VelocidadeInicial)
+                            .addComponent(VelocidadeFinal)
+                            .addComponent(FuncaoDeOndaInicial0)
+                            .addComponent(FuncaoDeOndaFinal0)
+                            .addComponent(ProbabilidadeInicial)
+                            .addComponent(ProbabilidadeFinal)
+                            .addComponent(ComprimentoDeOnda)
+                            .addComponent(EnergiaDoFoton)
+                            .addComponent(EnergiaNivelFinal))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(AreaLayout.createSequentialGroup()
+                                .addComponent(txtFuncOndaFinEletronpt1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(FuncaoDeOndaFinal1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(FuncaoDeOndaFinal2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtFuncOndaFinEletronpt2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(FuncaoDeOndaFinal3))
+                            .addGroup(AreaLayout.createSequentialGroup()
+                                .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtProbFinEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtVelIniEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtBroglieFinEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtVelFinalEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtProbIniEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(AreaLayout.createSequentialGroup()
+                                        .addComponent(txtFuncOndaIniEletronpt1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(FuncaoDeOndaInicial1)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(FuncaoDeOndaInicial2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtFuncOndaIniEletronpt2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(FuncaoDeOndaInicial3))
+                            .addComponent(txtFreqEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtBroglieIniEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEiEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCompEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEFotEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEfEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
+                        .addGap(30, 30, 30)
+                        .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtBroglieFinProton, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtBroglieIniProton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtEiProton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtEfProton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtFreqProton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCompProton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtEFotProton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtProbFinProton, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtProbIniProton, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(AreaLayout.createSequentialGroup()
+                                .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtFuncOndaIniProtonpt1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFuncOndaFinProtonpt1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(AreaLayout.createSequentialGroup()
+                                        .addComponent(FuncaoDeOndaFinal4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(FuncaoDeOndaFinal5))
+                                    .addGroup(AreaLayout.createSequentialGroup()
+                                        .addComponent(FuncaoDeOndaInicial4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(FuncaoDeOndaInicial5)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtFuncOndaIniProtonpt2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtFuncOndaFinProtonpt2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(FuncaoDeOndaInicial6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(FuncaoDeOndaFinal6)))
+                            .addComponent(txtVelFinalProton, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtVelIniProton, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(0, 16, Short.MAX_VALUE))
+                    .addGroup(AreaLayout.createSequentialGroup()
+                        .addComponent(Largura)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtLargura, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Ni)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNi, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(Nf)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNf, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(A)
+                        .addGap(4, 4, 4)
+                        .addComponent(txtA, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
+                        .addComponent(B)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtB, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
+        );
+        AreaLayout.setVerticalGroup(
+            AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AreaLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Largura)
+                    .addComponent(txtLargura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Ni)
+                    .addComponent(txtNi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(A)
+                    .addComponent(txtA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(B)
+                    .addComponent(txtB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Nf)
+                    .addComponent(txtNf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnCalcular)
+                .addGap(18, 18, 18)
+                .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(AreaLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtEiProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtEfProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtEFotProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCompProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtFreqProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtBroglieIniProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtBroglieFinProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtVelIniProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtVelFinalProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFuncOndaIniProtonpt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FuncaoDeOndaInicial4)
+                            .addComponent(FuncaoDeOndaInicial5)
+                            .addComponent(txtFuncOndaIniProtonpt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FuncaoDeOndaInicial6))
+                        .addGap(18, 18, 18)
+                        .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFuncOndaFinProtonpt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FuncaoDeOndaFinal4)
+                            .addComponent(FuncaoDeOndaFinal5)
+                            .addComponent(txtFuncOndaFinProtonpt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FuncaoDeOndaFinal6))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtProbIniProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtProbFinProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(AreaLayout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtEiEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EnergiaNivelInicial))
+                        .addGap(18, 18, 18)
+                        .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtEfEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EnergiaNivelFinal))
+                        .addGap(18, 18, 18)
+                        .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtEFotEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EnergiaDoFoton))
+                        .addGap(18, 18, 18)
+                        .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCompEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ComprimentoDeOnda))
+                        .addGap(18, 18, 18)
+                        .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFreqEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Frequencia))
+                        .addGap(18, 18, 18)
+                        .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtBroglieIniEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ComprimentoDeBroglieInicial))
+                        .addGap(18, 18, 18)
+                        .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtBroglieFinEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ComprimentoDeBroglieFinal))
+                        .addGap(18, 18, 18)
+                        .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtVelIniEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(VelocidadeInicial))
+                        .addGap(18, 18, 18)
+                        .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtVelFinalEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(VelocidadeFinal))
+                        .addGap(18, 18, 18)
+                        .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFuncOndaIniEletronpt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FuncaoDeOndaInicial1)
+                            .addComponent(FuncaoDeOndaInicial2)
+                            .addComponent(txtFuncOndaIniEletronpt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FuncaoDeOndaInicial3)
+                            .addComponent(FuncaoDeOndaInicial0))
+                        .addGap(18, 18, 18)
+                        .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFuncOndaFinEletronpt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FuncaoDeOndaFinal1)
+                            .addComponent(FuncaoDeOndaFinal2)
+                            .addComponent(txtFuncOndaFinEletronpt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(FuncaoDeOndaFinal3)
+                            .addComponent(FuncaoDeOndaFinal0))
+                        .addGap(18, 18, 18)
+                        .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtProbIniEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ProbabilidadeInicial))
+                        .addGap(18, 18, 18)
+                        .addGroup(AreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtProbFinEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ProbabilidadeFinal))))
+                .addContainerGap(48, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(204, 204, 204)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtLargura, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNf, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
-                            .addComponent(txtNi))
-                        .addGap(53, 53, 53)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(4, 4, 4)
-                                .addComponent(txtA, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtB, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(27, 27, 27)
-                .addComponent(jButton1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel19)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel20)
-                                    .addGap(16, 16, 16)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtFuncOndaFinEletronpt1, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                                .addComponent(txtFuncOndaIniEletronpt1))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel11)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel24)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtFuncOndaIniEletronpt2))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel12)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel25)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtFuncOndaFinEletronpt2)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel27)
-                                .addComponent(jLabel26))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel17)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtVelIniEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel18)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtVelFinalEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel22)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtProbFinEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel21)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtProbIniEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtEiEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtEfEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtEFotEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel15)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtFreqEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel16)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtBroglieIniEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(265, 265, 265)
-                                        .addComponent(jLabel6)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel14)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtCompEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel23)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtBroglieFinEletron, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)))
-                        .addGap(146, 146, 146)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtFuncOndaIniProtonpt1, javax.swing.GroupLayout.DEFAULT_SIZE, 129, Short.MAX_VALUE)
-                            .addComponent(txtFuncOndaFinProtonpt1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel29)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel31)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtFuncOndaIniProtonpt2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel30)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel32)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtFuncOndaFinProtonpt2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel33)
-                            .addComponent(jLabel28)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtBroglieIniProton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFreqProton, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)
-                            .addComponent(txtEFotProton, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEiProton, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEfProton, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCompProton, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(txtBroglieFinProton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtVelFinalProton, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtVelIniProton, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtProbFinProton, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtProbIniProton, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46))
+            .addComponent(Area, javax.swing.GroupLayout.PREFERRED_SIZE, 938, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtLargura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtNi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtNf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(txtA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtEiEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(txtEfEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(txtEFotEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel14)
-                            .addComponent(txtCompEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel15)
-                            .addComponent(txtFreqEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtEiProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEfProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtEFotProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCompProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtFreqProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtBroglieIniEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel16))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel23)
-                            .addComponent(txtBroglieFinEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtBroglieIniProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtBroglieFinProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel17)
-                            .addComponent(txtVelIniEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel18)
-                            .addComponent(txtVelFinalEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtVelIniProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtVelFinalProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel19)
-                            .addComponent(txtFuncOndaIniEletronpt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel24)
-                            .addComponent(txtFuncOndaIniEletronpt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel26))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel20)
-                            .addComponent(txtFuncOndaFinEletronpt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel25)
-                            .addComponent(txtFuncOndaFinEletronpt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel27))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel21)
-                            .addComponent(txtProbIniEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel22)
-                            .addComponent(txtProbFinEletron, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFuncOndaIniProtonpt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel29)
-                            .addComponent(jLabel31)
-                            .addComponent(txtFuncOndaIniProtonpt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel33))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtFuncOndaFinProtonpt2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel30)
-                            .addComponent(jLabel32)
-                            .addComponent(txtFuncOndaFinProtonpt1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel28))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtProbIniProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtProbFinProton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(79, Short.MAX_VALUE))
+            .addComponent(Area, javax.swing.GroupLayout.PREFERRED_SIZE, 776, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -597,153 +957,217 @@ public class JFrameContas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }                                     
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        // TODO add your handling code here:
-        
-        // !!!! TO AQUI EM TO AQUI !!!!
-        
-        String getL = txtLargura.getText();
-        String getni = txtNi.getText();
-        String getnf = txtNf.getText();
-        String getA = txtA.getText();
-        String getB = txtB.getText();
-        
-        double L = Double.parseDouble(getL);
-        int ni = Integer.parseInt(getni);
-        int  nf = Integer.parseInt(getnf);
-        double A = Double.parseDouble(getA);
-        double B = Double.parseDouble(getB);
-        
-        Contas contas = new Contas(L, ni, nf, A, B);
-        
-        // [ ELETRON EM, AQUI EH DO ELETRON!!! ]
-        
-        // ENERGIA INICIAL DO ELETRON
-        String EiEletron = String.valueOf(contas.EnergiaInicialEletron());
-        txtEiEletron.setText(EiEletron);
-        
-        // ENERGIA FINAL DO ELETRON
-        String EfEletron = String.valueOf(contas.EnergiaFinalEletron());
-        txtEfEletron.setText(EfEletron);
-        
-        // ENERGIA DO FOTON DO ELETRON
-        String EFotEletron = String.valueOf(contas.EnergiaFotonEletron());
-        txtEFotEletron.setText(EFotEletron);
-        
-        // COMPRIMENTO DE ONDA DO ELETORN
-        String ComprimentoEletron = String.valueOf(contas.ComprimentoOndaEletron());
-        txtCompEletron.setText(ComprimentoEletron);
-        
-        // FREQUEMCIA DO ELETRON
-        String FrequenciaEletron = String.valueOf(contas.FrequenciaEletron());
-        txtFreqEletron.setText(FrequenciaEletron);
-        
-        // COMPRIMENTO DE ONDA DE BROGLIE INICIAL
-        String DeBroglieInicialEletron = String.valueOf(contas.DeBroglieInicialProton());
-        txtBroglieIniEletron.setText(DeBroglieInicialEletron);
-        
-        // COMPRIMENTO DE ONDA DE BROGLIE FINAL
-        String DeBroglieFinalEletron = String.valueOf(contas.DeBroglieFinalEletron());
-        txtBroglieFinEletron.setText(DeBroglieFinalEletron);
-        
-        // VELOCIDADE INICIAL DO ELETRON
-        String VelocidadeIniEletron = String.valueOf(contas.VelocidadeIniEletron());
-        txtVelIniEletron.setText(VelocidadeIniEletron);
-        
-        // VELOCIDADE FINAL DO ELETRON
-        String VelocidadeFinEletron = String.valueOf(contas.VelocidadeFinEletron());
-        txtVelFinalEletron.setText(VelocidadeFinEletron);
-        
-        // FUNÇÃO DE ONDA INICIAL DO ELETRON
-        String FuncaoOndaIniPt1 = String.valueOf(Math.sqrt(2 / L));
-        txtFuncOndaIniEletronpt1.setText(FuncaoOndaIniPt1);
-        String FuncaoOndaIniPt2 = String.valueOf((ni * Math.PI) / L);
-        txtFuncOndaIniEletronpt2.setText(FuncaoOndaIniPt2);
-        
-        // FUNÇÃO DE ONDA FINAL DO ELETRON
-        String FuncaoOndaFinPt1 = String.valueOf(Math.sqrt(2 / L));
-        txtFuncOndaFinEletronpt1.setText(FuncaoOndaFinPt1);
-        String FuncaoOndaFinPt2 = String.valueOf((nf * Math.PI) / L);
-        txtFuncOndaFinEletronpt2.setText(FuncaoOndaFinPt2);
-        
-        // PROBABILIDADE INICIAL
-        String ProbInicial = String.valueOf(contas.ProbInicial());
-        txtProbIniEletron.setText(ProbInicial);
-        
-        // PROBABILIDADE FINAL
-        String ProbFinal = String.valueOf(contas.ProbFinal());
-        txtProbFinEletron.setText(ProbFinal);        
-        
-        
-        // [ PROTON EM, AQUI EH DO PROTON!!! ]
+    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // Exception para evitar erro ao pegar as entradas
+        try {
+            // TODO add your handling code here:
+            resultados_controller.pegaEntradas();
+        } catch (SQLException ex) {
+            Logger.getLogger(JFrameContas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }                                           
 
-        
-        // ENERGIA INICIAL DO PROTON
-        String EiProton = String.valueOf(contas.EnergiaInicialProton());
-        txtEiProton.setText(EiProton);
-        
-        // ENERGIA FINAL DO PROTON
-        String EfProton = String.valueOf(contas.EnergiaFinalProton());
-        txtEfProton.setText(EfProton);
-        
-        // ENERGIA DO FOTON DO PROTON
-        String EFotProton = String.valueOf(contas.EnergiaFotonProton());
-        txtEFotProton.setText(EFotProton);
-        
-        // COMPRIMENTO DE ONDA DO PROTON
-        String ComprimentoProton = String.valueOf(contas.ComprimentoOndaProton());
-        txtCompProton.setText(ComprimentoProton);
-        
-        // FREQUEMCIA DO ELETRON
-        String FrequenciaProton = String.valueOf(contas.FrequenciaProton());
-        txtFreqProton.setText(FrequenciaProton);
-        
-        // COMPRIMENTO DE ONDA DE BROGLIE INICIAL
-        String DeBroglieInicialProton = String.valueOf(contas.DeBroglieInicialProton());
-        txtBroglieIniProton.setText(DeBroglieInicialProton);
-        
-        // COMPRIMENTO DE ONDA DE BROGLIE FINAL
-        String DeBroglieFinalProton = String.valueOf(contas.DeBroglieFinalProton());
-        txtBroglieFinProton.setText(DeBroglieFinalProton);
-        
-        // VELOCIDADE INICIAL DO PROTON
-        String VelocidadeIniProton = String.valueOf(contas.VelocidadeIniProton());
-        txtVelIniProton.setText(VelocidadeIniProton);
-        
-        // VELOCIDADE FINAL DO PROTON
-        String VelocidadeFinProton = String.valueOf(contas.VelocidadeFinProton());
-        txtVelFinalProton.setText(VelocidadeFinProton);
-        
-        // FUNÇÃO DE ONDA INICIAL DO PROTON
-        String FuncaoOndaIniPt1P = String.valueOf(Math.sqrt(2 / L));
-        txtFuncOndaIniProtonpt1.setText(FuncaoOndaIniPt1P);
-        String FuncaoOndaIniPt2P = String.valueOf((ni * Math.PI) / L);
-        txtFuncOndaIniProtonpt2.setText(FuncaoOndaIniPt2P);
-        
-        // FUNÇÃO DE ONDA FINAL DO PROTON
-        String FuncaoOndaFinPt1P = String.valueOf(Math.sqrt(2 / L));
-        txtFuncOndaFinProtonpt1.setText(FuncaoOndaFinPt1P);
-        String FuncaoOndaFinPt2P = String.valueOf((nf * Math.PI) / L);
-        txtFuncOndaFinProtonpt2.setText(FuncaoOndaFinPt2P);
-        
-        // PROBABILIDADE INICIAL PROTON
-        String ProbInicialProton = String.valueOf(contas.ProbInicialProton());
-        txtProbIniProton.setText(ProbInicialProton);
-        
-        // PROBABILIDADE FINAL PROTON
-        String ProbFinalProton = String.valueOf(contas.ProbFinalProton());
-        txtProbFinProton.setText(ProbFinalProton);
-        
-    }                                        
+    // [ Valores inseridos pelo usuário ]
+    // Pega o valor da largura
+    public double getL() {
+        String getL = txtLargura.getText();
+        double L = Double.parseDouble(getL);
+        return L;
+    }
+
+    // Pega o valor Ni
+    public int getNi() {
+        String getni = txtNi.getText();
+        int ni = Integer.parseInt(getni);
+        return ni;
+    }
+
+    // Pega o valor Nf
+    public int getNf() {
+        String getnf = txtNf.getText();
+        int nf = Integer.parseInt(getnf);
+        return nf;
+    }
+
+    // Pega o valor de A
+    public double getA() {
+        String getA = txtA.getText();
+        double A = Double.parseDouble(getA);
+        return A;
+    }
+
+    // Pega o valor de B
+    public double getB() {
+        String getB = txtB.getText();
+        double B = Double.parseDouble(getB);
+        return B;
+    }
+
+    // [ TXT DO ELETRON ]
+    // Pega o JTextField da Energia Inicial do Eletron
+    public JTextField getTxtEiEletron() {
+        return txtEiEletron;
+    }
+
+    // Pega o JTextField da Energia Final do Eletron
+    public JTextField getTxtEfEletron() {
+        return txtEfEletron;
+    }
+
+    // Pega o JTextField da Energia do Fóton do Eletron
+    public JTextField getTxtEFotEletron() {
+        return txtEFotEletron;
+    }
+
+    // Pega o JTextField do Comprimento de Onda do Eletron
+    public JTextField getTxtCompEletron() {
+        return txtCompEletron;
+    }
+
+    // Pega o JTextField da Frequência do Eletron
+    public JTextField getTxtFreqEletron() {
+        return txtFreqEletron;
+    }
+
+    // Pega o JTextField do Comprimento de Onda de De Broglie Inicial do Eletron
+    public JTextField getTxtBroglieIniEletron() {
+        return txtBroglieIniEletron;
+    }
+
+    // Pega o JTextField do Comprimento de Onda de De Broglie Final do Eletron
+    public JTextField getTxtBroglieFinEletron() {
+        return txtBroglieFinEletron;
+    }
+
+    // Pega o JTextField da Velocidade Inicial do Eletron
+    public JTextField getTxtVelIniEletron() {
+        return txtVelIniEletron;
+    }
+
+    // Pega o JTextField da Velocidade Finale do Eletron
+    public JTextField getTxtVelFinEletron() {
+        return txtVelFinalEletron;
+    }
+
+    // Pega o JTextField da Parte 1 Da Função de Onda Inicial do Eletron
+    public JTextField getTxtFuncOndaIniEletronPt1() {
+        return txtFuncOndaIniEletronpt1;
+    }
+
+    // Pega o JTextField da Parte 2 Da Função de Onda Inicial do Eletron
+    public JTextField getTxtFuncOndaIniEletronPt2() {
+        return txtFuncOndaIniEletronpt2;
+    }
+
+    // Pega o JTextField da Parte 1 Da Função de Onda Final do Eletron
+    public JTextField getTxtFuncOndaFinEletronPt1() {
+        return txtFuncOndaFinEletronpt1;
+    }
+
+    // Pega o JTextField da Parte 2 Da Função de Onda Final do Eletron
+    public JTextField getTxtFuncOndaFinEletronPt2() {
+        return txtFuncOndaFinEletronpt2;
+    }
+
+    // Pega o JTextField da Probabilidade Inicial do Eletron
+    public JTextField getTxtProbIniEletron() {
+        return txtProbIniEletron;
+    }
+
+    // Pega o JTextField da Probabilidade Final do Eletron
+    public JTextField getTxtProbFinEletron() {
+        return txtProbFinEletron;
+    }
+
+    // [ TXT DO PROTON ]
+    // Pega o JTextField da Energia Inicial do Proton
+    public JTextField getTxtEiProton() {
+        return txtEiProton;
+    }
+
+    // Pega o JTextField da Energia Final do Proton
+    public JTextField getTxtEfProton() {
+        return txtEfProton;
+    }
+
+    // Pega o JTextField da Energia do Fóton do Proton
+    public JTextField getTxtEFotProton() {
+        return txtEFotProton;
+    }
+
+    // Pega o JTextField do Comprimento de Onda do Proton
+    public JTextField getTxtCompProton() {
+        return txtCompProton;
+    }
+
+    // Pega o JTextField da Frequência do Proton
+    public JTextField getTxtFreqProton() {
+        return txtFreqProton;
+    }
+
+    // Pega o JTextField do Comprimento de Onda de De Broglie Inicial do Proton
+    public JTextField getTxtBroglieIniProton() {
+        return txtBroglieIniProton;
+    }
+
+    // Pega o JTextField do Comprimento de Onda de De Broglie Final do Proton
+    public JTextField getTxtBroglieFinProton() {
+        return txtBroglieFinProton;
+    }
+
+    // Pega o JTextField da Velocidade Inicial do Proton
+    public JTextField getTxtVelIniProton() {
+        return txtVelIniProton;
+    }
+
+    // Pega o JTextField da Velocidade Finale do Proton
+    public JTextField getTxtVelFinProton() {
+        return txtVelFinalProton;
+    }
+
+    // Pega o JTextField da Parte 1 Da Função de Onda Inicial do Proton
+    public JTextField getTxtFuncOndaIniProtonPt1() {
+        return txtFuncOndaIniProtonpt1;
+    }
+
+    // Pega o JTextField da Parte 2 Da Função de Onda Inicial do Proton
+    public JTextField getTxtFuncOndaIniProtonPt2() {
+        return txtFuncOndaIniProtonpt2;
+    }
+
+    // Pega o JTextField da Parte 1 Da Função de Onda Final do Proton
+    public JTextField getTxtFuncOndaFinProtonPt1() {
+        return txtFuncOndaFinProtonpt1;
+    }
+
+    // Pega o JTextField da Parte 2 Da Função de Onda Final do Proton
+    public JTextField getTxtFuncOndaFinProtonPt2() {
+        return txtFuncOndaFinProtonpt2;
+    }
+
+    // Pega o JTextField da Probabilidade Inicial do Proton
+    public JTextField getTxtProbIniProton() {
+        return txtProbIniProton;
+    }
+
+    // Pega o JTextField da Probabilidade Final do Proton
+    public JTextField getTxtProbFinProton() {
+        return txtProbFinProton;
+    }
+
 
     private void txtVelIniProtonActionPerformed(java.awt.event.ActionEvent evt) {                                                
         // TODO add your handling code here:
     }                                               
-    
+
+    private void txtVelIniProton2ActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        // TODO add your handling code here:
+    }                                                
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) throws SQLException {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -766,6 +1190,7 @@ public class JFrameContas extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(JFrameContas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -776,76 +1201,102 @@ public class JFrameContas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify                     
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel A;
+    private javax.swing.JPanel Area;
+    private javax.swing.JLabel B;
+    private javax.swing.JLabel ComprimentoDeBroglieFinal;
+    private javax.swing.JLabel ComprimentoDeBroglieInicial;
+    private javax.swing.JLabel ComprimentoDeOnda;
+    private javax.swing.JLabel EnergiaDoFoton;
+    private javax.swing.JLabel EnergiaNivelFinal;
+    private javax.swing.JLabel EnergiaNivelInicial;
+    private javax.swing.JLabel Frequencia;
+    private javax.swing.JLabel FuncaoDeOndaFinal0;
+    private javax.swing.JLabel FuncaoDeOndaFinal1;
+    private javax.swing.JLabel FuncaoDeOndaFinal10;
+    private javax.swing.JLabel FuncaoDeOndaFinal11;
+    private javax.swing.JLabel FuncaoDeOndaFinal12;
+    private javax.swing.JLabel FuncaoDeOndaFinal2;
+    private javax.swing.JLabel FuncaoDeOndaFinal3;
+    private javax.swing.JLabel FuncaoDeOndaFinal4;
+    private javax.swing.JLabel FuncaoDeOndaFinal5;
+    private javax.swing.JLabel FuncaoDeOndaFinal6;
+    private javax.swing.JLabel FuncaoDeOndaInicial0;
+    private javax.swing.JLabel FuncaoDeOndaInicial1;
+    private javax.swing.JLabel FuncaoDeOndaInicial10;
+    private javax.swing.JLabel FuncaoDeOndaInicial11;
+    private javax.swing.JLabel FuncaoDeOndaInicial12;
+    private javax.swing.JLabel FuncaoDeOndaInicial2;
+    private javax.swing.JLabel FuncaoDeOndaInicial3;
+    private javax.swing.JLabel FuncaoDeOndaInicial4;
+    private javax.swing.JLabel FuncaoDeOndaInicial5;
+    private javax.swing.JLabel FuncaoDeOndaInicial6;
+    private javax.swing.JLabel Largura;
+    private javax.swing.JLabel Nf;
+    private javax.swing.JLabel Ni;
+    private javax.swing.JLabel ProbabilidadeFinal;
+    private javax.swing.JLabel ProbabilidadeInicial;
+    private javax.swing.JLabel Proton2;
+    private javax.swing.JLabel VelocidadeFinal;
+    private javax.swing.JLabel VelocidadeInicial;
+    private javax.swing.JButton btnCalcular;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField txtA;
     private javax.swing.JTextField txtB;
     private javax.swing.JTextField txtBroglieFinEletron;
     private javax.swing.JTextField txtBroglieFinProton;
+    private javax.swing.JTextField txtBroglieFinProton2;
     private javax.swing.JTextField txtBroglieIniEletron;
     private javax.swing.JTextField txtBroglieIniProton;
+    private javax.swing.JTextField txtBroglieIniProton2;
     private javax.swing.JTextField txtCompEletron;
     private javax.swing.JTextField txtCompProton;
+    private javax.swing.JTextField txtCompProton2;
     private javax.swing.JTextField txtEFotEletron;
     private javax.swing.JTextField txtEFotProton;
+    private javax.swing.JTextField txtEFotProton2;
     private javax.swing.JTextField txtEfEletron;
     private javax.swing.JTextField txtEfProton;
+    private javax.swing.JTextField txtEfProton2;
     private javax.swing.JTextField txtEiEletron;
     private javax.swing.JTextField txtEiProton;
+    private javax.swing.JTextField txtEiProton2;
     private javax.swing.JTextField txtFreqEletron;
     private javax.swing.JTextField txtFreqProton;
+    private javax.swing.JTextField txtFreqProton2;
     private javax.swing.JTextField txtFuncOndaFinEletronpt1;
     private javax.swing.JTextField txtFuncOndaFinEletronpt2;
     private javax.swing.JTextField txtFuncOndaFinProtonpt1;
     private javax.swing.JTextField txtFuncOndaFinProtonpt2;
+    private javax.swing.JTextField txtFuncOndaFinProtonpt5;
+    private javax.swing.JTextField txtFuncOndaFinProtonpt6;
     private javax.swing.JTextField txtFuncOndaIniEletronpt1;
     private javax.swing.JTextField txtFuncOndaIniEletronpt2;
     private javax.swing.JTextField txtFuncOndaIniProtonpt1;
     private javax.swing.JTextField txtFuncOndaIniProtonpt2;
+    private javax.swing.JTextField txtFuncOndaIniProtonpt5;
+    private javax.swing.JTextField txtFuncOndaIniProtonpt6;
     private javax.swing.JTextField txtLargura;
     private javax.swing.JTextField txtNf;
     private javax.swing.JTextField txtNi;
     private javax.swing.JTextField txtProbFinEletron;
     private javax.swing.JTextField txtProbFinProton;
+    private javax.swing.JTextField txtProbFinProton2;
     private javax.swing.JTextField txtProbIniEletron;
     private javax.swing.JTextField txtProbIniProton;
+    private javax.swing.JTextField txtProbIniProton2;
     private javax.swing.JTextField txtVelFinalEletron;
     private javax.swing.JTextField txtVelFinalProton;
+    private javax.swing.JTextField txtVelFinalProton2;
     private javax.swing.JTextField txtVelIniEletron;
     private javax.swing.JTextField txtVelIniProton;
+    private javax.swing.JTextField txtVelIniProton2;
     // End of variables declaration                   
 }
